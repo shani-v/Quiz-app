@@ -9,7 +9,7 @@ function App() {
   const [showResult, setShowResult] = useState(false)
   const [isNext, setIsNext] = useState(false)
 
-  let API = 'https://opentdb.com/api.php?amount=10&category=9&type=multiple'
+  let API = 'https://opentdb.com/api.php?amount=50&category=9&type=multiple'
   const fetchApiData = async (url) => {
     try {
       const res = await fetch(url)
@@ -21,7 +21,6 @@ function App() {
         return el
       })
       setAllQuestion(allQuestion)
-      console.log(allQuestion)
     } catch (err) {
       console.log(err)
     }
@@ -32,7 +31,6 @@ function App() {
     }
   }
   const changeQuestion = () => {
-    // if (!element === allQuestions[currentQus].options) {
     if (currentQus < allQuestions.length - 1) {
       setCurrentQus(currentQus + 1)
       setClickElement(0)
@@ -40,7 +38,6 @@ function App() {
       setShowResult(true)
     }
   }
-  // }
 
   const resetAll = () => {
     setShowResult(false)
