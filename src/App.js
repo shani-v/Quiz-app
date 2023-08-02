@@ -34,6 +34,7 @@ function App() {
     if (currentQus < allQuestions.length - 1) {
       setCurrentQus(currentQus + 1)
       setClickElement(0)
+      setIsNext(false)
     } else {
       setShowResult(true)
     }
@@ -52,20 +53,23 @@ function App() {
 
   return (
     <>
-      <div className='flex justify-center items-center bg-cyan-500 h-screen w-auto'>
+      <div className='flex justify-center items-center bg-cyan-500 min-h-screen'>
         <div>
           {showResult ? (
-            <div className='bg-white rounded-md mx-5 md:mx-0 p-5'>
-              <h1 className='text-center  mb-16 underline text-black text-3xl font-bold'>
+            <div className='bg-white rounded-md mx-5 md:mx-0'>
+              <h1 className='pt-10 text-center underline text-black text-xl font-bold'>
                 QUIZ APP
               </h1>
-              <h1 className='font-bold text-2xl border-2 border-red-500 p-2 w-80 text-center bg-emerald-300 '>
-                total score :- <span>{allQuestions.length}</span>
-              </h1>
-              <h1 className='font-bold text-2xl border-2 border-red-500 p-2 text-center mt-4 bg-emerald-300 '>
-                your score :-<span className='ml-2'>{score}</span>
-              </h1>
-              <div className='flex justify-center mt-10'>
+
+              <div className='pt-10 mx-4'>
+                <h1 className='capitalize font-semibold text-lg border p-2 w-60 text-center shadow rounded'>
+                  total Question :- <span>{allQuestions.length}</span>
+                </h1>
+                <h1 className='capitalize font-semibold text-lg border p-2 text-center mt-4 shadow rounded'>
+                  your Answer :-<span className='ml-2'>{score}</span>
+                </h1>
+              </div>
+              <div className='flex justify-center py-10'>
                 <button
                   onClick={() => {
                     resetAll()
@@ -78,13 +82,13 @@ function App() {
             </div>
           ) : (
             <div className='bg-white rounded-md mx-5 md:mx-0'>
-              <h1 className='text-center mt-5 underline text-black text-2xl font-bold'>
-                QUIZ APP
+              <h1 className='uppercase text-center pt-5 text-black text-xl font-bold'>
+                Quiz App
               </h1>
-              <div className='flex gap-1 border-2 break-all border-gray-200 p-2 mx-5 mt-5 shadow-lg'>
-                <h1 className='font-bold text-2xl'>{currentQus + 1}.</h1>
+              <div className='flex gap-1 p-2 m-5'>
+                <h1 className='font-bold'>{currentQus + 1}.</h1>
 
-                <p className=' font-bold text-xl text-justify'>
+                <p className='font-semibold max-w-md'>
                   {allQuestions[currentQus]?.question}
                 </p>
               </div>
@@ -99,19 +103,17 @@ function App() {
                         setClickElement(i + 1)
                         setIsNext(true)
                       }}
-                      className={`flex-wrap mx-5 mt-5  border-2 border-red-400 hover:bg-emerald-500 hover:cursor-pointer ${
+                      className={`flex justify-center flex-wrap mx-5 mb-3 border shadow rounded hover:bg-emerald-500 hover:cursor-pointer ${
                         clickElement === i + 1 ? 'bg-emerald-500' : null
                       }`}
                     >
-                      <h1 className='text-center py-5 font-semibold text-xl'>
-                        {element}
-                      </h1>
+                      <h1 className='text-center py-4'>{element}</h1>
                     </div>
                   </>
                 )
               })}
 
-              <div className='flex justify-center items-center  mt-10 '>
+              <div className='flex justify-center items-center py-5'>
                 <button
                   className='bg-cyan-300 h-10 w-40 font-bold rounded-md m-4  hover:bg-cyan-500'
                   onClick={() => {
@@ -125,9 +127,6 @@ function App() {
               </div>
             </div>
           )}
-          <div className='text-red-500 p-10 px-5 font-bold'>
-            Shani Vishwakarma
-          </div>
         </div>
       </div>
     </>
